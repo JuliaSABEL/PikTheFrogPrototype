@@ -22,7 +22,6 @@ public class EatingMosquitoes : MonoBehaviour
 
         if (collisionTag == "Food")
         {
-            Debug.Log("Íÿì");
             mosquitoCounter--;
 
             UIMosquitoCounter.text = mosquitoCounter.ToString();

@@ -1,11 +1,9 @@
 using UnityEngine;
 
-public class FrogController : MonoBehaviour
+public class FrogController : PlayerInput
 {
     [SerializeField]
     private float frogSpeed = 3f;
-
-    private float horizontalMove, verticalMove;
 
     private Rigidbody2D frogRigidBody;
 
@@ -14,7 +12,7 @@ public class FrogController : MonoBehaviour
         frogRigidBody = gameObject.GetComponent<Rigidbody2D>();
     }
 
-    public void FrogControll()
+    void FixedUpdate()
     {
         if (horizontalMove != 0 || verticalMove != 0)
         {
@@ -25,12 +23,5 @@ public class FrogController : MonoBehaviour
         {
             frogRigidBody.velocity = Vector2.zero;
         }
-    }
-
-    public void PlayerInput()
-    {
-        horizontalMove = Input.GetAxis("Horizontal");
-
-        verticalMove = Input.GetAxis("Vertical"); 
     }
 }

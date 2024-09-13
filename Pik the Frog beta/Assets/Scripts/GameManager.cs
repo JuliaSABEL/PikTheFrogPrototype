@@ -1,21 +1,41 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField]
-    private FrogController frogController;
-    [SerializeField]
-    private CameraControl cameraControl;
+    public CollisionWithMushroom collisionWithMushroom;
 
-    void Update()
+    public HealthController healthController;
+
+    public FrogInvulnerability frogInvulnerability;
+
+    public UIManager uIManager;
+
+    private void OnEnable()
     {
-        frogController.PlayerInput();
+        collisionWithMushroom.OnCollisionWithMushroom += healthController.DecreaseInHealth;
+
+        collisionWithMushroom.OnCollisionWithMushroom += frogInvulnerability.FrogInvulnerabilityMethod;
+
+        collisionWithMushroom.OnCollisionWithMushroom += uIManager.UpdateUI;
+
+        collisionWithMushroom.OnCollisionWithMushroom += RestartGame;
     }
 
-    void FixedUpdate()
+    private void OnDisable()
     {
-        frogController.FrogControll();
+        collisionWithMushroom.OnCollisionWithMushroom -= healthController.DecreaseInHealth;
 
-        cameraControl.CameraFollow();
+        collisionWithMushroom.OnCollisionWithMushroom -= uIManager.UpdateUI;
+
+        collisionWithMushroom.OnCollisionWithMushroom -= RestartGame;
+    }
+
+    private void RestartGame()
+    {
+        if (healthController.FrogHearts == 0)
+        {
+            SceneManager.LoadScene(0);
+        }
     }
 }

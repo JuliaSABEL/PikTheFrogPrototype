@@ -11,7 +11,7 @@ public class CameraControl : MonoBehaviour
     [SerializeField]
     private float smoothSpeed = 0.125f;
 
-    public void CameraFollow()
+    void FixedUpdate()
     {
         Vector3 desiredPosition = frog.position + offset;
 
