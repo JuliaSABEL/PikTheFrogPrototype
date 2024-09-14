@@ -1,15 +1,20 @@
+using System;
 using UnityEngine;
-using TMPro;
 
-public class EatingMosquitoes : MonoBehaviour
+public class MosquitoCollector : MonoBehaviour
 {
+    public Action OnMosquitoCollector;
+
+    private int mosquitoCounter;
+
     [SerializeField]
     private GameObject mosquitoesGroup;
 
-    [SerializeField]
-    private TextMeshProUGUI UIMosquitoCounter;
-
-    public int mosquitoCounter;
+    public int MosquitoCounter
+    {
+        get { return mosquitoCounter; }
+        set { mosquitoCounter = value; }
+    }
 
     void Start()
     {
@@ -24,9 +29,9 @@ public class EatingMosquitoes : MonoBehaviour
         {
             mosquitoCounter--;
 
-            UIMosquitoCounter.text = mosquitoCounter.ToString();
-
             Destroy(collision.gameObject);
+
+            OnMosquitoCollector?.Invoke();
         }
     }
 }

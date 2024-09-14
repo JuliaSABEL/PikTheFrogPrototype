@@ -1,7 +1,10 @@
+using System;
 using UnityEngine;
 
 public class HealthController : MonoBehaviour
 {
+    public Action OnHealthController;
+
     [SerializeField]
     private int frogHearts = 3;
 
@@ -14,5 +17,7 @@ public class HealthController : MonoBehaviour
     public void DecreaseInHealth()
     {
         frogHearts--;
+
+        OnHealthController?.Invoke();
     }
 }

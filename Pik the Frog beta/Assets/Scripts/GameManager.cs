@@ -3,35 +3,48 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public CollisionWithMushroom collisionWithMushroom;
+    [SerializeField]
+    private CollisionWithMushroom collisionWithMushroom;
 
-    public HealthController healthController;
+    [SerializeField]
+    private HealthController healthController;
 
-    public FrogInvulnerability frogInvulnerability;
+    [SerializeField]
+    private MosquitoCollector mosquitoCollector;
 
-    public UIManager uIManager;
+    [SerializeField]
+    private FrogInvulnerability frogInvulnerability;
 
-    private void OnEnable()
+    [SerializeField]
+    private UIManager uIManager;
+
+    void OnEnable()
     {
         collisionWithMushroom.OnCollisionWithMushroom += healthController.DecreaseInHealth;
 
-        collisionWithMushroom.OnCollisionWithMushroom += frogInvulnerability.FrogInvulnerabilityMethod;
+        healthController.OnHealthController += frogInvulnerability.FrogInvulnerabilityMethod;
 
-        collisionWithMushroom.OnCollisionWithMushroom += uIManager.UpdateUI;
+        healthController.OnHealthController += uIManager.UpdateHealthUI;
 
-        collisionWithMushroom.OnCollisionWithMushroom += RestartGame;
+        healthController.OnHealthController += RestartGame;
+
+        mosquitoCollector.OnMosquitoCollector += uIManager.UpdateMosquitoCounterUI;
     }
 
-    private void OnDisable()
+    void OnDisable()
     {
         collisionWithMushroom.OnCollisionWithMushroom -= healthController.DecreaseInHealth;
 
-        collisionWithMushroom.OnCollisionWithMushroom -= uIManager.UpdateUI;
+        healthController.OnHealthController -= frogInvulnerability.FrogInvulnerabilityMethod;
 
-        collisionWithMushroom.OnCollisionWithMushroom -= RestartGame;
+        healthController.OnHealthController -= uIManager.UpdateHealthUI;
+
+        healthController.OnHealthController -= RestartGame;
+
+        mosquitoCollector.OnMosquitoCollector -= uIManager.UpdateMosquitoCounterUI;
     }
 
-    private void RestartGame()
+    void RestartGame()
     {
         if (healthController.FrogHearts == 0)
         {

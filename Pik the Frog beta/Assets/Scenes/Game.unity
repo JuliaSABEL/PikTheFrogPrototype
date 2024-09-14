@@ -1521,10 +1521,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthController: {fileID: 2011983694}
+  mosquitoCollector: {fileID: 2011983696}
   frogHeartsImg:
   - {fileID: 863677443}
   - {fileID: 1654491195}
   - {fileID: 78811876}
+  UIMosquitoCounter: {fileID: 786270579}
 --- !u!1001 &315831613
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3875,7 +3877,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: deb06f55a31efe1469c53db0f9540943, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eatingMosquitoes: {fileID: 2011983692}
+  mosquitoCollector: {fileID: 2011983696}
 --- !u!1001 &627388320
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7172,6 +7174,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collisionWithMushroom: {fileID: 2011983691}
   healthController: {fileID: 2011983694}
+  mosquitoCollector: {fileID: 2011983696}
   frogInvulnerability: {fileID: 2011983695}
   uIManager: {fileID: 313751800}
 --- !u!1001 &1197529937
@@ -16110,9 +16113,9 @@ GameObject:
   - component: {fileID: 2011983688}
   - component: {fileID: 2011983693}
   - component: {fileID: 2011983691}
-  - component: {fileID: 2011983692}
   - component: {fileID: 2011983694}
   - component: {fileID: 2011983695}
+  - component: {fileID: 2011983696}
   m_Layer: 6
   m_Name: Frog
   m_TagString: Untagged
@@ -16271,21 +16274,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de87fb0d7dd98bb43af71ff9aebce43d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2011983692
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2011983685}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c15f36b57cc6ec488de2793e3124da4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mosquitoesGroup: {fileID: 1560648030}
-  UIMosquitoCounter: {fileID: 786270579}
-  mosquitoCounter: 20
 --- !u!114 &2011983693
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16324,6 +16312,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe8c51e34bec7f74497ab34de274f457, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2011983696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2011983685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81925b33b8bfe6f49b5ac26445e6044b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mosquitoesGroup: {fileID: 1560648030}
 --- !u!1001 &2012997958
 PrefabInstance:
   m_ObjectHideFlags: 0
